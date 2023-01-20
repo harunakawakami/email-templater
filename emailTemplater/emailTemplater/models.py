@@ -5,3 +5,6 @@ class Template(models.Model):
   subject = models.CharField(max_length=200)
   body = models.CharField(max_length=5000, blank=True, null=True)
   show_in_list = models.BooleanField(default=True)
+
+class Category(models.Model):
+  
