@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User, Group
+from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework import permissions
-from emailTemplater.template.serializers import UserSerializer, GroupSerializer, TemplateSerializer
+from .models import Template
+from template.serializers import UserSerializer, GroupSerializer, TemplateSerializer
 
 # Create your views here.
 
@@ -21,3 +23,9 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+def template_list(request):
+    templates = Template.objects.all()
+    serializer = TemplateSerializer(templates, many=True)
+    return JsonResponse(serializer.data, safe=False)
+

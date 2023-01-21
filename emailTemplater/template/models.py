@@ -5,5 +5,6 @@ from taggit.managers import TaggableManager
 class Template(models.Model):
   subject = models.CharField(max_length=100)
   body = models.TextField(blank=True)
-  show_in_list = models.BooleanField(help_text='Yes = show the template in the list')
+  show_in_list = models.BooleanField(default=True, help_text='Yes = show the template in the list')
   tags = TaggableManager()
+  
