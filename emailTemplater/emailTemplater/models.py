@@ -1,10 +1,10 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 class Template(models.Model):
   id = models.AutoField(primary_key=True)
   subject = models.CharField(max_length=200)
-  body = models.CharField(max_length=5000, blank=True, null=True)
+  body = models.TextField(blank=True)
   show_in_list = models.BooleanField(default=True)
+  tags = TaggableManager(blank=True)
 
-class Category(models.Model):
-  
