@@ -19,5 +19,6 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('templates/', views.template_list)
+    path('templates/', views.template_list),
+    path('templates/<int:id>', views.template_detail)
 ]
